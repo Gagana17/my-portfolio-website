@@ -1,289 +1,725 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Gagana Gunawardhana - Software Developer Portfolio</title>
-    <meta charset="utf-8" />
-    <meta
-      name="description"
-      content="Portfolio of Gagana Gunawardhana - Software Developer specializing in full-stack development, MERN stack, and Flutter applications"
-    />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
-    />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript
-      ><link rel="stylesheet" href="assets/css/noscript.css"
-    /></noscript>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gagana Gunawardhana - Software Developer & Researcher</title>
     <style>
-      /* Custom background styles */
-      #bg {
-        background-image: url("images/background.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-      }
-
-      #bg:after {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(
-          91,
-          83,
-          83,
-          0.65
-        ); /* Dark overlay for better readability */
-        z-index: -1;
-      }
-
-      /* Enhance text readability */
-      #wrapper {
-        position: relative;
-        z-index: 1;
-      }
-
-      .content {
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff05" points="0,1000 1000,0 1000,1000"/></svg>');
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: slideInUp 1s ease;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: slideInUp 1s ease 0.3s both;
+        }
+        
+        .hero .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+            animation: slideInUp 1s ease 0.6s both;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid rgba(255,255,255,0.3);
+            font-weight: bold;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            animation: slideInUp 1s ease 0.9s both;
+        }
+        
+        .cta-button:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            padding: 15px 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        /* Sections */
+        section {
+            padding: 100px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+        
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: center;
+            margin-top: 50px;
+        }
+        
+        .about-image {
+            text-align: center;
+        }
+        
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .about-content h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+        
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .achievement-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .achievement-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        /* Research Section */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .research-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .research-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        .research-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .research-content {
+            padding: 30px;
+        }
+        
+        .research-content h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .project-content {
+            padding: 30px;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .tech-tag {
+            background: #f0f2ff;
+            color: #667eea;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .project-link {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .project-link:hover {
+            color: #764ba2;
+        }
+        
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .skill-category {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .skill-category h4 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+            padding: 100px 50px;
+            margin-top: 100px;
+        }
+        
+        .contact h2 {
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero .subtitle { font-size: 1.2rem; }
+            .about-grid { grid-template-columns: 1fr; text-align: center; }
+            .profile-image { width: 250px; height: 250px; }
+            section { padding: 50px 20px; }
+            nav { padding: 15px 20px; }
+            .nav-links { display: none; }
+        }
     </style>
-  </head>
-  <body class="is-preload">
-    <div id="wrapper">
-      <!-- Header -->
-      <header id="header">
-        <div class="logo">
-          <span class="icon fa-code"></span>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">Gagana G.</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
-        <div class="content">
-          <div class="inner">
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
             <h1>Gagana Gunawardhana</h1>
-            <p>Full-Stack Software Developer | MERN Stack | Flutter</p>
-            <p>All-Island Chess Winner | BSc (Hons.) IT Student at SLIIT</p>
-          </div>
+            <p class="subtitle">Software Developer • Researcher • Chess Champion</p>
+            <p class="tagline">Transforming Ideas into Innovative Digital Solutions</p>
+            <a href="#about" class="cta-button">Discover My Journey</a>
         </div>
-        <nav>
-          <ul>
-            <li><a href="#intro">About Me</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-      </header>
+    </section>
 
-      <!-- Main -->
-      <div id="main">
-        <!-- Intro -->
-        <article id="intro">
-          <h2 class="major">About Me</h2>
-          <span class="image main"
-            ><img src="images/profile.jpg" alt="Gagana Gunawardhana"
-          /></span>
-          <p>
-            As a highly motivated software developer and current BSc (Hons.) IT
-            student at SLIIT, I combine technical expertise with strategic
-            thinking - skills that have earned me recognition as an All-Island
-            Chess Winner. I specialize in full-stack development using the MERN
-            stack and mobile development with Flutter.
-          </p>
-          <p>
-            Having successfully completed my internship at Syntax Erreur as a
-            Software Developer, I've gained valuable experience in creating
-            efficient, scalable solutions that solve real-world problems. My
-            expertise spans across web applications and mobile development, with
-            a proven track record in both frontend and backend technologies.
-            This experience has strengthened my foundation in developing
-            enterprise-level applications while working with cross-functional
-            teams.
-          </p>
-        </article>
-
-        <!-- Experience -->
-        <article id="experience">
-          <h2 class="major">Experience</h2>
-          <div class="experience-item">
-            <h3>Software Developer Intern - Syntax Erreur</h3>
-            <p class="period">June 2024 - December 2024</p>
-            <ul>
-              <li>
-                Develop full-stack web applications using TypeScript, React, and
-                Express.js
-              </li>
-              <li>
-                Create mobile solutions using Flutter and implement AI-powered
-                features
-              </li>
-              <li>
-                Optimize application performance and implement best practices in
-                containerization
-              </li>
-              <li>
-                Collaborate with senior developers on multiple high-impact
-                projects
-              </li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- Projects -->
-        <article id="projects">
-          <h2 class="major">Featured Projects</h2>
-
-          <div class="project">
-            <h3>SL-Embassy Documentation System</h3>
-            <p>
-              A comprehensive web application for managing official
-              documentation including birth and marriage certificates.
-            </p>
-            <p><strong>Technologies:</strong> TypeScript, React, Express.js</p>
-            <p><strong>Role:</strong> Full-stack Developer</p>
-            <a
-              href="https://github.com/Syntax-Erreur/SL-Embassy.git"
-              class="button special"
-              >View Project</a
-            >
-          </div>
-
-          <div class="project">
-            <h3>Livespace-App</h3>
-            <p>
-              AI-powered platform for home design visualization with advanced
-              image rendering capabilities.
-            </p>
-            <p><strong>Technologies:</strong> Flutter, AI Integration</p>
-            <p><strong>Role:</strong> Mobile Developer</p>
-            <a
-              href="https://github.com/Syntax-Erreur/Livespace-App.git"
-              class="button special"
-              >View Project</a
-            >
-          </div>
-
-          <div class="project">
-            <h3>Spicy Management System</h3>
-            <p>
-              Web-based platform for inventory, production, and sales management
-              in the spice industry.
-            </p>
-            <p>
-              <strong>Technologies:</strong> React, Express, NodeJS, MongoDB
-            </p>
-            <p><strong>Role:</strong> Full-stack Developer</p>
-           <a
-              href="https://github.com/Gagana17/New_Company_Management_System.git"
-              class="button special"
-              >View Project</a
-            >
-          </div>
-        </article>
-
-        <!-- Skills -->
-        <article id="skills">
-          <h2 class="major">Technical Skills</h2>
-
-          <div class="skills-section">
-            <h3>Programming Languages</h3>
-            <p>Java, JavaScript, TypeScript, PHP, C++, Python, Dart</p>
-
-            <h3>Frameworks & Libraries</h3>
-            <p>SpringBoot, React, Tailwind CSS, Node.js, Express.js, Flutter</p>
-
-            <h3>Databases & Tools</h3>
-            <p>MySQL, PostgreSQL, MongoDB, Git, Docker, Prisma</p>
-
-            <h3>Soft Skills</h3>
-            <p>
-              Problem-solving, Strategic thinking, Team collaboration, Effective
-              communication
-            </p>
-          </div>
-        </article>
-
-        <!-- Contact -->
-        <article id="contact">
-          <h2 class="major">Get In Touch</h2>
-          <form method="post" action="#" class="contact-form">
-            <div class="fields">
-              <div class="field half">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" required />
-              </div>
-              <div class="field half">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" required />
-              </div>
-              <div class="field">
-                <label for="message">Message</label>
-                <textarea
-                  name="message"
-                  id="message"
-                  rows="4"
-                  required
-                ></textarea>
-              </div>
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+            <div class="about-image">
+                <div class="profile-image">GG</div>
             </div>
-            <ul class="actions">
-              <li>
-                <input type="submit" value="Send Message" class="primary" />
-              </li>
-            </ul>
-          </form>
+            <div class="about-content">
+                <h3>Strategic Thinker & Innovative Developer</h3>
+                <p>As a highly motivated software developer and BSc (Hons.) IT student at SLIIT, I bring a unique blend of technical expertise and strategic thinking to every project. My background as an All-Island Chess Winner has shaped my analytical approach to problem-solving and strategic planning.</p>
+                <p>Currently advancing my career as a Software Developer Intern at Syntax Erreur, I specialize in full-stack development using cutting-edge technologies including the MERN stack, Flutter, and AI integration. My passion lies in creating scalable, efficient solutions that make a real-world impact.</p>
+                <p>I thrive on challenges that push the boundaries of technology, whether it's developing enterprise-level applications, conducting research, or mentoring fellow developers in collaborative environments.</p>
+            </div>
+        </div>
+        
+        <div class="achievements">
+            <div class="achievement-card">
+                <div class="achievement-icon">🏆</div>
+                <h4>All-Island Chess Winner</h4>
+                <p>Strategic thinking and analytical skills demonstrated through competitive chess achievements</p>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">💼</div>
+                <h4>Software Developer Intern</h4>
+                <p>Professional experience at Syntax Erreur developing enterprise-level applications</p>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">🎓</div>
+                <h4>BSc (Hons.) IT Student</h4>
+                <p>Pursuing advanced studies in Information Technology at SLIIT</p>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">🚀</div>
+                <h4>Full-Stack Developer</h4>
+                <p>Expertise in modern web and mobile technologies with proven project delivery</p>
+            </div>
+        </div>
+    </section>
 
-          <div class="contact-info">
-            <p>Email: gaganatcc@gmail.com</p>
-            <p>Phone: +94 76 941 0015</p>
-          </div>
+    <!-- Research Section -->
+    <section id="research">
+        <h2 class="section-title">Research & Innovation</h2>
+        <div class="research-grid">
+            <div class="research-card">
+                <div class="research-header">
+                    <h3>🤖 AI-Powered Development</h3>
+                </div>
+                <div class="research-content">
+                    <h4>Machine Learning Integration in Web Applications</h4>
+                    <p>Research focus on integrating AI capabilities into traditional web applications, exploring neural networks for enhanced user experiences and automated decision-making processes.</p>
+                    <p><strong>Technologies:</strong> TensorFlow, Python, React, Node.js</p>
+                    <p><strong>Status:</strong> Ongoing Research</p>
+                </div>
+            </div>
+            
+            <div class="research-card">
+                <div class="research-header">
+                    <h3>📱 Mobile Innovation</h3>
+                </div>
+                <div class="research-content">
+                    <h4>Cross-Platform Development Optimization</h4>
+                    <p>Investigating performance optimization techniques for Flutter applications, focusing on memory management and rendering efficiency across different platforms.</p>
+                    <p><strong>Technologies:</strong> Flutter, Dart, Native APIs</p>
+                    <p><strong>Status:</strong> Publication in Progress</p>
+                </div>
+            </div>
+            
+            <div class="research-card">
+                <div class="research-header">
+                    <h3>🔒 Security Research</h3>
+                </div>
+                <div class="research-content">
+                    <h4>Modern Web Application Security</h4>
+                    <p>Analyzing emerging security threats in modern web applications and developing robust authentication and authorization frameworks.</p>
+                    <p><strong>Technologies:</strong> OAuth 2.0, JWT, Blockchain</p>
+                    <p><strong>Status:</strong> Research Phase</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-          <ul class="icons">
-            <li>
-              <a
-                href="https://github.com/Gagana17"
-                class="icon brands fa-github"
-                target="_blank"
-              >
-                <span class="label">GitHub</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.linkedin.com/in/gagana-gunawardhana-a5b119269"
-                class="icon brands fa-linkedin"
-                target="_blank"
-              >
-                <span class="label">LinkedIn</span>
-              </a>
-            </li>
-          </ul>
-        </article>
-      </div>
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">🏛️</div>
+                <div class="project-content">
+                    <h4>SL-Embassy Documentation System</h4>
+                    <p>Comprehensive web application for managing official documentation including birth and marriage certificates with advanced security features and user management.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Express.js</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                    <a href="https://github.com/Syntax-Erreur/SL-Embassy.git" class="project-link">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image">🏠</div>
+                <div class="project-content">
+                    <h4>Livespace-App</h4>
+                    <p>AI-powered platform for home design visualization featuring advanced image rendering capabilities and intelligent space optimization algorithms.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">AI Integration</span>
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">Firebase</span>
+                    </div>
+                    <a href="https://github.com/Syntax-Erreur/Livespace-App.git" class="project-link">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image">🌶️</div>
+                <div class="project-content">
+                    <h4>Spicy Management System</h4>
+                    <p>Enterprise-level web platform for comprehensive inventory, production, and sales management specifically designed for the spice industry supply chain.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                    <a href="https://github.com/Gagana17/New_Company_Management_System.git" class="project-link">View Project →</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <!-- Footer -->
-      <footer id="footer">
-        <p class="copyright">
-          &copy; 2024 Gagana Gunawardhana. All rights reserved.
-        </p>
-      </footer>
-    </div>
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Technical Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4>Programming Languages</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Dart</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">PHP</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h4>Frameworks & Libraries</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Express.js</span>
+                    <span class="skill-tag">Flutter</span>
+                    <span class="skill-tag">Spring Boot</span>
+                    <span class="skill-tag">Tailwind CSS</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h4>Databases & Tools</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Prisma</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h4>Specializations</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Full-Stack Development</span>
+                    <span class="skill-tag">Mobile Development</span>
+                    <span class="skill-tag">AI Integration</span>
+                    <span class="skill-tag">System Architecture</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Background -->
-    <div id="bg"></div>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Let's Build Something Amazing Together</h2>
+        <p>I'm always excited to discuss new opportunities, collaborate on innovative projects, or share insights about technology and development.</p>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <span>gagana.developer@gmail.com</span>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">💼</div>
+                <span>LinkedIn Profile</span>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">🐱</div>
+                <span>GitHub Portfolio</span>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📱</div>
+                <span>+94 XX XXX XXXX</span>
+            </div>
+        </div>
+    </section>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-  </body>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.achievement-card, .research-card, .project-card, .skill-category').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
 </html>
